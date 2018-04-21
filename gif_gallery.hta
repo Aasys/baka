@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- 
+GIF Gallery by AASYS
+@author Aasys Sresta
+https://github.com/Aasys
+Simple script to view your gif collection for Windows.
+
+Simply copy this script to your gif folder and open it.
+-->
+
+<html>
+
+<head>
+    <title>gifs by aasys</title>
+	<style>
+		div.gallery {
+			border: 1px solid #ccc;
+		}
+
+		div.gallery:hover {
+			border: 1px solid #777;
+		}
+
+		div.desc {
+			padding: 15px;
+			text-align: center;
+			display: none;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		.responsive {
+			padding: 0 6px;
+			float: left;
+			width: 19.8%;
+		}
+
+		@media only screen and (max-width: 700px) {
+			.responsive {
+				width: 49.99999%;
+				margin: 6px 0;
+			}
+		}
+
+		@media only screen and (max-width: 500px) {
+			.responsive {
+				width: 100%;
+			}
+		}
+		
+		img {
+			width: 300px;
+			height: 200px;
+		}
+		
+		body {
+			background-color: #212121;
+			color: white;
+		}
+
+	</style>
+	</head>
+
+<body>
+	<center>
+		<h2>GIF Gallery by AASYS</h2>
+	</center>
+	<script type="text/vbs">
+	Dim x
+	Dim all_files
+	x = 0
+	set fso=CreateObject("Scripting.FileSystemObject")
+	set fldr=fso.GetFolder(".")
+	for each file in fldr.files
+	if lcase(right(file.name,4))=".gif" and x < 50 then
+	x = x + 1
+	document.write "<div class=""responsive""> <div class=""gallery""><center> <img src=""" & file.name & """ async> </center><div class=""desc"">" & file.name & "</div> </div> </div>"
+	end if
+	next
+	</script>
+</body>
+
+</html>
